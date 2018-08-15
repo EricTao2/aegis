@@ -1,8 +1,8 @@
 <p align="center">
-    <a href="https://lets-blade.com"><img src="https://static.biezhi.me/blade-logo.png" width="650"/></a>
+    <a href="https://lets-blade.com"><img src="https://raw.githubusercontent.com/EricTao2/images-repository/master/aegis/readme-cover.jpg" width="650"/></a>
 </p>
-<p align="center">基于 <code>Java8</code> + <code>Netty4</code> 创造的轻量级、高性能、简洁优雅的Web框架 😋</p>
-<p align="center">花 <b>1小时</b> 学会它做点有趣的项目，一款除了Spring系框架的不二之选。</p>
+<p align="center">基于 <code>Java8</code> + <code>SpringBoot</code> 创造的轻量、便捷的接口保护插件 😋</p>
+<p align="center">添加 <b>1个</b> 注解，即可对接口进行防重放攻击，参数签名校验，请求超时校验。</p>
 <p align="center">
     🐾 <a href="#快速入门" target="_blank">快速开始</a> | 
     📘 <a href="https://dev-cheats.com/topics/blade-in-action.html" target="_blank">BladeInAction</a> | 
