@@ -1,10 +1,10 @@
 package com.erictao.aegis.aegisdemo;
 
-import com.erictao.aegis.aegiscore.annotation.DefendModify;
-import com.erictao.aegis.aegiscore.annotation.DefendReplay;
-import com.erictao.aegis.aegiscore.annotation.DefendTimeout;
+import com.erictao.aegis.api.annotation.DefendModify;
+import com.erictao.aegis.api.annotation.DefendTimeout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,7 +26,17 @@ public class DemoController {
     public String index(){
 
         demoService.test("123", "321");
-        return "demo" ;
+        return "get-demo" ;
+    }
+
+    @PostMapping("/2")
+    //@DefendReplay
+    @DefendTimeout
+    @DefendModify
+    public String post(){
+
+        demoService.test("123", "321");
+        return "post-demo" ;
     }
 
 

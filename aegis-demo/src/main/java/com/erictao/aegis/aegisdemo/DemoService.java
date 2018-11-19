@@ -1,6 +1,5 @@
 package com.erictao.aegis.aegisdemo;
 
-import com.erictao.aegis.aegiscore.annotation.DefendReplay;
 import org.springframework.stereotype.Service;
 
 /**

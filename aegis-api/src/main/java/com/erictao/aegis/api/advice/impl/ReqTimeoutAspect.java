@@ -1,8 +1,9 @@
-package com.erictao.aegis.aegiscore.advice;
+package com.erictao.aegis.api.advice.impl;
 
-import com.erictao.aegis.aegiscore.advice.processor.ReqTimeoutProcessor;
-import com.erictao.aegis.aegiscore.annotation.DefendReplay;
-import com.erictao.aegis.aegiscore.annotation.DefendTimeout;
+import com.erictao.aegis.api.advice.HttpRequestAspect;
+import com.erictao.aegis.api.advice.processor.ReqTimeoutProcessor;
+import com.erictao.aegis.api.annotation.DefendTimeout;
+import com.erictao.aegis.core.advice.AbstractAspect;
 import lombok.Data;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -29,8 +30,8 @@ public class ReqTimeoutAspect extends AbstractAspect implements HttpRequestAspec
     /**
      * 切面该注解
      */
-    @Pointcut("@annotation(com.erictao.aegis.aegiscore.annotation.DefendTimeout)" +
-            "||@within(com.erictao.aegis.aegiscore.annotation.DefendTimeout)")
+    @Pointcut("@annotation(com.erictao.aegis.api.annotation.DefendTimeout)" +
+            "||@within(com.erictao.aegis.api.annotation.DefendTimeout)")
     public void check(){
     }
 
