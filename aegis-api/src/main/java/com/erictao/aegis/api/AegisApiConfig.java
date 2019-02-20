@@ -6,11 +6,14 @@ import com.erictao.aegis.api.advice.processor.ReqTimeoutProcessor;
 import com.erictao.aegis.api.advice.processor.impl.CheckModifyParameterProcessor;
 import com.erictao.aegis.api.advice.processor.impl.CheckReqNoProcessor;
 import com.erictao.aegis.api.advice.processor.impl.CheckReqTimeoutProcessor;
-import com.erictao.aegis.api.localcache.CacheMap;
+import com.erictao.aegis.api.localcache.CacheSet;
 import com.erictao.aegis.api.properties.AegisApiProperties;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -22,11 +25,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 @ComponentScan
 @Configuration
 @EnableConfigurationProperties(AegisApiProperties.class)
-@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AegisApiConfig {
 
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
     /**
      * 运行时的参数Properties对象
      */
@@ -36,8 +36,15 @@ public class AegisApiConfig {
 
     @Bean
     @ConditionalOnMissingBean(ReplayAttackProcessor.class)
-    public ReplayAttackProcessor replayAttackProcessor() {
-        return new CheckReqNoProcessor(redisTemplate, aegisApiProperties);
+    public ReplayAttackProcessor replayAttackProcessor(@Autowired RedisTemplate<String, String> aegisRedisTemplate,
+                                                       CacheSet cacheSet, ApplicationContext context) {
+        boolean useRedis = false;
+        //如果没有加入redis配置的就返回false
+        String property = context.getEnvironment().getProperty("spring.redis.host");
+        if (StringUtils.isNotBlank(property) && aegisApiProperties.isUseRedis()){
+            useRedis = true ;
+        }
+        return new CheckReqNoProcessor(aegisRedisTemplate, cacheSet, aegisApiProperties, useRedis);
     }
     @Bean
     @ConditionalOnMissingBean(ReqTimeoutProcessor.class)
@@ -52,9 +59,8 @@ public class AegisApiConfig {
     }
 
     @Bean
-    @Conditional(CheckRedisCondition.class)
-    public CacheMap localCache(){
-        return new CacheMap(aegisApiProperties.getReplayAttacks().getReqNoTimeout());
+    public CacheSet localCache(){
+        return new CacheSet(aegisApiProperties.getReplayAttacks().getReqNoTimeout());
     }
 
 

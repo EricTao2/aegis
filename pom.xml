@@ -5,10 +5,11 @@
 
 	<groupId>com.erictao.aegis</groupId>
 	<artifactId>aegis</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
     <modules>
 		<module>aegis-core</module>
         <module>aegis-api</module>
+		<module>aegis-validator</module>
 		<module>aegis-demo</module>
 	</modules>
     <packaging>pom</packaging>

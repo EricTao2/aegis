@@ -1,4 +1,4 @@
-package com.erictao.aegis.core.properties;
+package com.erictao.aegis.validator.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -8,8 +8,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @Title: AegisApiProperties
  * @date 2018/7/2710:29
  */
-@ConfigurationProperties(prefix = "aegis.core")
+@ConfigurationProperties(prefix = "aegis.annotation")
 @Data
-public class AegisProperties {
+public class AegisValidatorProperties {
 
 }

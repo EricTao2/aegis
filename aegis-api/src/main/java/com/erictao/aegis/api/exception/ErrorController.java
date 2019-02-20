@@ -16,7 +16,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 @Slf4j
 @ControllerAdvice
 public class ErrorController {
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(AegisApiException.class)
     @ResponseBody
     public ResponseEntity<SimpleResponse>  processUnauthenticatedException(NativeWebRequest request, Exception e) {
         log.error("请求出现异常:", e);

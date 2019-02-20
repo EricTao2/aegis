@@ -12,7 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 public class AegisApiProperties {
 
-    private String hasRedis = "true";
+    private boolean useRedis = true;
     private ReplayAttacksProperties replayAttacks = new ReplayAttacksProperties();
     private ReqTimeoutProperties reqTimeout = new ReqTimeoutProperties();
     private ModifyParameterProperties modifyParameter = new ModifyParameterProperties();

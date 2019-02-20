@@ -3,6 +3,7 @@ package com.erictao.aegis.api.advice.processor.impl;
 import com.erictao.aegis.api.advice.processor.ReplayAttackProcessor;
 import com.erictao.aegis.api.annotation.DefendReplay;
 import com.erictao.aegis.api.exception.AegisApiException;
+import com.erictao.aegis.api.localcache.CacheSet;
 import com.erictao.aegis.api.properties.AegisApiProperties;
 import com.erictao.aegis.core.utils.RequestUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +27,11 @@ public class CheckReqNoProcessor implements ReplayAttackProcessor {
 
     private RedisTemplate<String, String> redisTemplate;
 
+    private CacheSet cacheSet;
+
     private String ReqNoName;
 
-    private String checkType;
+    private boolean useRedis = false;
 
     private String reqNoRedisPrefix;
 
@@ -36,8 +39,10 @@ public class CheckReqNoProcessor implements ReplayAttackProcessor {
 
     private Long timeout;
 
-    public CheckReqNoProcessor(RedisTemplate<String,String> redisTemplate, AegisApiProperties aegisApiProperties) {
+    public CheckReqNoProcessor(RedisTemplate<String,String> redisTemplate, CacheSet cacheSet,
+                               AegisApiProperties aegisApiProperties, boolean useRedis) {
         this.redisTemplate = redisTemplate;
+        this.cacheSet = cacheSet;
         this.ReqNoName = aegisApiProperties.getReplayAttacks().getReqNoName();
         this.reqNoRedisPrefix = aegisApiProperties.getReplayAttacks().getReqNoRedisPrefix();
         if (StringUtils.equalsIgnoreCase("s", aegisApiProperties.getReplayAttacks().getTimeUnit())) {
@@ -46,7 +51,7 @@ public class CheckReqNoProcessor implements ReplayAttackProcessor {
             this.timeUnit = TimeUnit.MILLISECONDS;
         }
         this.timeout = aegisApiProperties.getReplayAttacks().getReqNoTimeout();
-        this.checkType = "重放攻击";
+        this.useRedis = useRedis;
     }
 
     @Override
@@ -65,17 +70,36 @@ public class CheckReqNoProcessor implements ReplayAttackProcessor {
             throw new AegisApiException("缺少参数:" + ReqNoName);
 
         }
+        String cacheKey = reqNoRedisPrefix + reqNo;
+        if (useRedis) {
+            checkByRedis(reqNo, cacheKey);
+        } else {
+            checkByLocalCache(reqNo, cacheKey);
+        }
+    }
+
+    private  void checkByRedis(String reqNo, String cacheKey) {
         try {
-            String oldReqNo = redisTemplate.opsForValue().get(reqNoRedisPrefix + reqNo);
+
+            String oldReqNo = redisTemplate.opsForValue().get(cacheKey);
             log.info("ReqNo=" + reqNo);
             if (StringUtils.isNotEmpty(oldReqNo)) {
                 throw new AegisApiException("请求号重复,"+ ReqNoName +"=" + reqNo, HttpStatus.CONFLICT);
             } else {
-                redisTemplate.opsForValue().set(reqNoRedisPrefix + reqNo, reqNo, timeout, timeUnit);
+                redisTemplate.opsForValue().set(cacheKey, reqNo, timeout, timeUnit);
             }
         } catch (RedisConnectionFailureException e){
             log.error("redis操作异常",e);
             throw new AegisApiException("need redisService", HttpStatus.INTERNAL_SERVER_ERROR) ;
         }
     }
+
+    private void checkByLocalCache(String reqNo, String cacheKey) {
+            if (cacheSet.contains(cacheKey)) {
+                throw new AegisApiException("请求号重复,"+ ReqNoName +"=" + reqNo, HttpStatus.CONFLICT);
+            } else {
+                cacheSet.add(cacheKey);
+            }
+    }
+
 }
