@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>aegis</artifactId>
-        <groupId>com.erictao.aegis</groupId>
+        <groupId>com.github.erictao2</groupId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -18,7 +18,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.erictao.aegis</groupId>
+            <groupId>com.github.erictao2</groupId>
             <artifactId>aegis-core</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>

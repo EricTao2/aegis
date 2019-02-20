@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\com.erictao.aegis.core.AegisConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\com.github.erictao2.aegis.core.AegisConfig
