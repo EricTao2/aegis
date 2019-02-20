@@ -3,7 +3,7 @@
 </p>
 <p align="center">Based on <code>Java8</code> + <code>Spring Boot</code> to create <b>Http Request</b> interception and verification framework 😋</p>
 <p align="center">Spend <b>10 minutes</b> to learn it to do something, it will help you check Http Request parameters.</p>
-<p align="center">It can defend <b>replay attack</b>, check <b>parameters are modified</b>, check <b>parameters is timed out</b></p>
+<p align="center">It can defend <b>replay attack</b>, check <b>parameters are modified(digital signature)</b>, check <b>request is timed out</b></p>
 <p align="center">
     🐾 <a href="#quick-start" target="_blank">Quick Start</a> |
     🌚 <a href="" target="_blank">Contribution</a>|
