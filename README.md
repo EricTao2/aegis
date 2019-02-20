@@ -69,7 +69,7 @@ public class DemoController {
     }
 }
 ```
-you request must like this
+you `URL` must like this
 `http://localhost:8080/1?parameterOne=oneoneone&reqSign=f4da2ed1dca4bfd481d83cfb89f12ab6`
 
 In the URL
@@ -91,7 +91,7 @@ public class DemoController {
     }
 }
 ```
-you request must like this
+you `URL` must like this
 `http://localhost:8080/2?timestamp=1550653175000`
 
 ### DefendReplay
@@ -111,10 +111,10 @@ public class DemoController {
 
 }
 ```
-you request must like this
+you `URL`must like this
 `http://localhost:8080/3?ReqNo=ds1&timestamp=1533205566000`
 
-When you send a request with parameter of `ReqNo`, and Other request already send same `ReqNo`, if the time difference(`timestamp`) between the two requests is less than the set time(`timeout` in the annotation), last request will be rejected.
+When you send a request with parameter of `reqNo`, and Other request already send same `reqNo`, if the time difference(`timestamp`) between the two requests is less than the set time(`timeout` in the annotation), last request will be rejected.
 
 ## Contact
 
