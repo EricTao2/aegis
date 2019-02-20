@@ -6,7 +6,7 @@
 <p align="center">It can defend <b>replay attack</b>, check <b>parameters are modified(digital signature)</b>, check <b>request is timed out</b></p>
 <p align="center">
     🐾 <a href="#quick-start" target="_blank">Quick Start</a> |
-    🌚 <a href="" target="_blank">Contribution</a>|
+    🌚
     🇨🇳 <a href="README_CN.md">简体中文</a>
 </p>
 <p align="center">
