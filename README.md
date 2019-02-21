@@ -3,20 +3,16 @@
 </p>
 <p align="center">Based on <code>Java8</code> + <code>Spring Boot</code> to create <b>Http Request</b> interception and verification framework 😋</p>
 <p align="center">Spend <b>10 minutes</b> to learn it to do something, it will help you check Http Request parameters.</p>
-<p align="center">It can defend <b>replay attack</b>, check <b>parameters are modified</b>, check <b>parameters is timed out</b></p>
+<p align="center">It can defend <b>replay attack</b>, check <b>parameters are modified(digital signature)</b>, check <b>request is timed out</b></p>
 <p align="center">
     🐾 <a href="#quick-start" target="_blank">Quick Start</a> |
-    🌚 <a href="" target="_blank">Contribution</a>|
+    🌚
     🇨🇳 <a href="README_CN.md">简体中文</a>
 </p>
 <p align="center">
-    <a href="https://travis-ci.org/lets-blade/blade"><img src="https://img.shields.io/travis/lets-blade/blade.svg?style=flat-square"></a>
-    <a href="http://codecov.io/github/lets-blade/blade?branch=dev"><img src="https://img.shields.io/codecov/c/github/lets-blade/blade/dev.svg?style=flat-square"></a>
-    <a href="http://search.maven.org/#search%7Cga%7C1%7Cblade-mvc"><img src="https://img.shields.io/maven-central/v/com.bladejava/blade-mvc.svg?style=flat-square"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square"></a>
-    <a class="badge-align" href="https://www.codacy.com/app/lets-blade/blade"><img src="https://api.codacy.com/project/badge/Grade/5f5fb55f38614f04823372db3a3c1d1b"/></a>
-    <a href="https://gitter.im/biezhi/blade"><img src="https://badges.gitter.im/biezhi/blade.svg?style=flat-square"></a>
-    <a href="https://www.codetriage.com/biezhi/blade"><img src="https://www.codetriage.com/biezhi/blade/badges/users.svg"></a>
+</a>
+    <a href="#"><img src="https://img.shields.io/maven-central/v/com.bladejava/blade-mvc.svg?style=flat-square"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square">
 </p>
 
 ***
@@ -73,7 +69,7 @@ public class DemoController {
     }
 }
 ```
-you request must like this
+you `URL` must like this
 `http://localhost:8080/1?parameterOne=oneoneone&reqSign=f4da2ed1dca4bfd481d83cfb89f12ab6`
 
 In the URL
@@ -95,7 +91,7 @@ public class DemoController {
     }
 }
 ```
-you request must like this
+you `URL` must like this
 `http://localhost:8080/2?timestamp=1550653175000`
 
 ### DefendReplay
@@ -115,10 +111,10 @@ public class DemoController {
 
 }
 ```
-you request must like this
+you `URL`must like this
 `http://localhost:8080/3?ReqNo=ds1&timestamp=1533205566000`
 
-When you send a request with parameter of `ReqNo`, and Other request already send same `ReqNo`, if the time difference(`timestamp`) between the two requests is less than the set time(`timeout` in the annotation), last request will be rejected.
+When you send a request with parameter of `reqNo`, and Other request already send same `reqNo`, if the time difference(`timestamp`) between the two requests is less than the set time(`timeout` in the annotation), last request will be rejected.
 
 ## Contact
 
