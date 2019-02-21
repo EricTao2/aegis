@@ -5,7 +5,7 @@
     <parent>
         <artifactId>aegis</artifactId>
         <groupId>com.github.erictao2</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.github.erictao2</groupId>
             <artifactId>aegis-core</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
