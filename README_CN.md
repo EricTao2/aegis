@@ -19,8 +19,7 @@
 
 ## Aegis 是啥?
 
-`Aegis` 是一个追求简洁的框架, 所以使用了最新的技术, 能够拦截每一个http请求,  然后检查其中的参数, 并且你能修改每个校验策略。
-如果你觉得这个框架不错，能够给我一个赞 [star](https://github.com/EricTao2/aegis)来支持我:blush:
+能够给我一个赞 [star](https://github.com/EricTao2/aegis)来支持我:blush:
 
 ## <span id="quick-start">快速开始</span>
 
