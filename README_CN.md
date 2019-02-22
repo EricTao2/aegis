@@ -30,7 +30,7 @@
 <dependency>
     <groupId>com.github.com.erictao2</groupId>
     <artifactId>aegis-api</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
