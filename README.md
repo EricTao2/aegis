@@ -71,6 +71,7 @@ public class DemoController {
 ```
 you `URL` must like this
 `http://localhost:8080/1?parameterOne=oneoneone&reqSign=f4da2ed1dca4bfd481d83cfb89f12ab6`
+or include these parameters in request body(JSON)
 
 In the URL
 `reqSign` = (Use some algorithm encryption for others paramets, default is MD5 )
@@ -93,6 +94,7 @@ public class DemoController {
 ```
 you `URL` must like this
 `http://localhost:8080/2?timestamp=1550653175000`
+or include these parameters in request body(JSON)
 
 ### DefendReplay
 This annotation will help you defend replay attack.let's see: 
@@ -113,6 +115,7 @@ public class DemoController {
 ```
 you `URL`must like this
 `http://localhost:8080/3?ReqNo=ds1&timestamp=1533205566000`
+or include these parameters in request body(JSON)
 
 When you send a request with parameter of `reqNo`, and Other request already send same `reqNo`, if the time difference(`timestamp`) between the two requests is less than the set time(`timeout` in the annotation), last request will be rejected.
 
