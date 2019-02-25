@@ -68,9 +68,11 @@ public class DemoController {
 ```
 你的请求 `URL` 必须像这样：
 `http://localhost:8080/1?parameterOne=oneoneone&reqSign=f4da2ed1dca4bfd481d83cfb89f12ab6`
+或者在Request Body里包含JSON格式的这些参数
 
 在`URL里`
 `reqSign` = (是用算法加密所有其他参数得出的结果, 默认是MD5加密 )
+
 
 ### DefendTimeout
 这个注解能够帮你检查请求是否超时：
@@ -90,6 +92,7 @@ public class DemoController {
 ```
 你的请求 `URL` 必须像这样：
 `http://localhost:8080/2?timestamp=1550653175000`
+或者在Request Body里包含JSON格式的这些参数
 
 ### DefendReplay
 这个注解能帮你防御重放攻击： 
@@ -110,6 +113,7 @@ public class DemoController {
 ```
 你的请求 `URL` 必须像这样：
 `http://localhost:8080/3?reqNo=ds1&timestamp=1533205566000`
+或者在Request Body里包含JSON格式的这些参数
 
 当你发出一个请求时，如果该请求的`reqNo`和之前某个请求的`reqNo`相同，且两个请求的时间（`timestamp`）之差，没有超过设定的时间（`timeout`），那么这个请求将会被拦截掉。
 
