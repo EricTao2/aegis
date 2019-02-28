@@ -11,7 +11,7 @@
 </p>
 <p align="center">
 </a>
-    <a href="https://search.maven.org/search?q=a:aegis-api"><img src="https://img.shields.io/maven-central/v/com.bladejava/blade-mvc.svg?style=flat-square"></a>
+    <a href="https://search.maven.org/search?q=a:aegis-api"><img src="https://img.shields.io/maven-central/v/com.github.erictao2/aegis-api.svg?style=flat-square"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square"></a>
 </p>
 
