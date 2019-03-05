@@ -41,7 +41,7 @@ Create a basic `Maven` project
 
 Then add annotation in you `Controller` or `Method`, please refer to the documentation for specific annotation usage!
 
-+ [Aegis Demos](https://github.com/lets-blade/blade-demos)
++ [Aegis Demos](https://github.com/EricTao2/aegis-test)
 
 ## Contents
 
